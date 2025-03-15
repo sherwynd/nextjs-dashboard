@@ -26,7 +26,7 @@ export default function RootLayout({
           {/* Sidebar (Client Component for interactivity) */}
           <Sidebar />
 
-          <div className="flex flex-col flex-1">
+          <div className="flex flex-1 flex-col">
             {/* Header */}
             <Header />
 

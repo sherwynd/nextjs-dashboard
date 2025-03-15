@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Header() {
   return (
-    <div className="navbar bg-white dark:bg-gray-800 p-4 flex justify-between items-center shadow-xl h-16">
+    <div className="navbar flex h-16 items-center justify-between bg-white p-4 shadow-xl dark:bg-gray-800">
       <div className="flex items-center"></div>
       <div className="flex items-center">
         <Bell />

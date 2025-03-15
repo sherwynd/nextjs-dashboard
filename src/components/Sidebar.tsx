@@ -19,17 +19,17 @@ export function Sidebar() {
         collapsed ? "w-16 md:w-20" : "w-64"
       }`}
     >
-      <nav className="h-full flex flex-col">
+      <nav className="flex h-full flex-col">
         {/* Toggle Button */}
         <div
-          className={`p-4 flex h-16 ${
+          className={`flex h-16 p-4 ${
             collapsed ? `justify-center` : `justify-between`
           }`}
         >
           {!collapsed && <h1 className="text-xl font-bold">Logo</h1>}
           <Button
             onClick={() => setCollapsed(!collapsed)}
-            className="bg-gray-700 p-2 rounded-md"
+            className="rounded-md bg-gray-700 p-2"
           >
             {collapsed ? <ChevronLast /> : <ChevronFirst />}
           </Button>
@@ -40,7 +40,7 @@ export function Sidebar() {
           {menuItems.map((item) => (
             <li
               key={item.name}
-              className={`flex items-center gap-4 p-3 hover:bg-gray-700 rounded-md ${
+              className={`flex items-center gap-4 rounded-md p-3 hover:bg-gray-700 ${
                 collapsed && "justify-center"
               }`}
             >

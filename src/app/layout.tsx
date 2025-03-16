@@ -31,7 +31,9 @@ export default function RootLayout({
             <Header />
 
             {/* Main Content */}
-            <main className="flex-1 bg-gray-200 p-4">{children}</main>
+            <main className="flex-1 overflow-y-auto bg-gray-200 p-4 dark:bg-gray-600">
+              {children}
+            </main>
           </div>
         </ThemeProvider>
       </body>

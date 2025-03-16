@@ -15,9 +15,9 @@ export function Sidebar() {
 
   return (
     <aside
-      className={`h-screen bg-gray-900 text-white transition-all duration-300 ${
+      className={`hidden bg-gray-900 text-white transition-all duration-300 sm:block ${
         collapsed ? "w-16 md:w-20" : "w-64"
-      }`}
+      } h-screen overflow-y-auto`}
     >
       <nav className="flex h-full flex-col">
         {/* Toggle Button */}

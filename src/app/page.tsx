@@ -1,5 +1,8 @@
 import { TrendLineChart } from "@/components/chart/TrendLineChart";
 import { TrendCard } from "@/components/dashboard/TrendCard";
+import { analyticColumns } from "@/components/dataTable/analytic/AnalyticColumns";
+import { DataTableDemo } from "@/components/dataTable/demo/DataTableDemo";
+import { DataTable } from "@/components/dataTable/DataTable";
 
 export default function Home() {
   const trendList = [
@@ -33,11 +36,32 @@ export default function Home() {
     },
   ];
 
+  type Crypto = {
+    rank: number;
+    name: string;
+    symbol: string;
+    price: number;
+  };
+
+  const cryptoData: Crypto[] = [
+    { rank: 1, name: "Bitcoin", symbol: "BTC", price: 83343.48 },
+    { rank: 2, name: "Ethereum", symbol: "ETH", price: 1898.66 },
+    { rank: 3, name: "Tether USDt", symbol: "USDT", price: 0.9998 },
+    { rank: 4, name: "XRP", symbol: "XRP", price: 2.33 },
+    { rank: 5, name: "BNB", symbol: "BNB", price: 628.75 },
+    { rank: 6, name: "Solana", symbol: "SOL", price: 128.71 },
+    { rank: 7, name: "USDC", symbol: "USDC", price: 1.0 },
+    { rank: 8, name: "Dogecoin", symbol: "DOGE", price: 0.1722 },
+    { rank: 9, name: "Cardano", symbol: "ADA", price: 0.7197 },
+    { rank: 10, name: "TRON", symbol: "TRX", price: 0.2127 },
+    { rank: 11, name: "Pi", symbol: "PI", price: 1.39 },
+  ];
+
   return (
     <>
       <h1 className="pb-4 font-medium">Analytics Dashboard</h1>
 
-      <main className="grid h-screen grid-cols-12 gap-4">
+      <main className="grid grid-cols-12 gap-4">
         {/* Row 1-2 */}
         <div className="col-span-12 grid grid-cols-2 gap-4 lg:col-span-4">
           {trendList.map((items, index) => (
@@ -57,22 +81,12 @@ export default function Home() {
           <TrendLineChart />
         </div>
 
-        <div className="col-span-12 row-span-3 flex items-center justify-center rounded-2xl bg-pink-500 md:col-span-3">
-          F
+        <div className="col-span-12 row-span-3 rounded-xl bg-white">
+          <DataTable columns={analyticColumns} data={cryptoData} />
         </div>
-        <div className="col-span-12 row-span-3 flex items-center justify-center rounded-2xl bg-gray-500 md:col-span-6">
+        {/* <div className="col-span-12 row-span-3 flex items-center justify-center rounded-xl bg-gray-500">
           G
-        </div>
-        <div className="col-span-12 row-span-3 flex items-center justify-center rounded-2xl bg-orange-500 md:col-span-3">
-          H
-        </div>
-
-        <div className="col-span-12 row-span-3 flex items-center justify-center rounded-2xl bg-cyan-500 md:col-span-9">
-          I
-        </div>
-        <div className="col-span-12 row-span-3 flex items-center justify-center rounded-2xl bg-teal-500 md:col-span-3">
-          J
-        </div>
+        </div> */}
       </main>
     </>
   );

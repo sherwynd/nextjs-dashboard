@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex h-screen">
+      <body className="flex h-screen overflow-hidden">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -1,9 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { Tooltip, XAxis, YAxis, AreaChart, Area } from "recharts";
 
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-
 import {
   Select,
   SelectContent,
@@ -13,20 +13,38 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const salesChartData = [
-  { yesr: "2025", month: "Jan", sales: 2115 },
-  { yesr: "2025", month: "Feb", sales: 1562 },
-  { yesr: "2025", month: "Mar", sales: 1584 },
-  { yesr: "2025", month: "Apr", sales: 1892 },
-  { yesr: "2025", month: "May", sales: 1587 },
-  { yesr: "2025", month: "Jun", sales: 1923 },
-  { yesr: "2025", month: "Jul", sales: 2566 },
-  { yesr: "2025", month: "Aug", sales: 2448 },
-  { yesr: "2025", month: "Sep", sales: 2805 },
-  { yesr: "2025", month: "Oct", sales: 3438 },
-  { yesr: "2025", month: "Nov", sales: 2917 },
-  { yesr: "2025", month: "Dec", sales: 3327 },
-];
+type SalesDataType = Record<
+  string,
+  { year: string; month: string; sales: number }[]
+>;
+
+const salesData: SalesDataType = {
+  "2023": [
+    { year: "2023", month: "Aug", sales: 2448 },
+    { year: "2023", month: "Sep", sales: 2805 },
+    { year: "2023", month: "Oct", sales: 3438 },
+    { year: "2023", month: "Nov", sales: 2917 },
+    { year: "2023", month: "Dec", sales: 3327 },
+  ],
+  "2024": [
+    { year: "2024", month: "Jan", sales: 2115 },
+    { year: "2024", month: "Feb", sales: 1562 },
+    { year: "2024", month: "Mar", sales: 1584 },
+    { year: "2024", month: "Apr", sales: 1892 },
+    { year: "2024", month: "May", sales: 1587 },
+    { year: "2024", month: "Jun", sales: 1923 },
+    { year: "2024", month: "Jul", sales: 2566 },
+    { year: "2024", month: "Aug", sales: 2448 },
+    { year: "2024", month: "Sep", sales: 2805 },
+    { year: "2024", month: "Oct", sales: 3438 },
+    { year: "2024", month: "Nov", sales: 2917 },
+    { year: "2024", month: "Dec", sales: 3327 },
+  ],
+  "2025": [
+    { year: "2025", month: "Jan", sales: 2115 },
+    { year: "2025", month: "Feb", sales: 1562 },
+  ],
+};
 
 const chartConfig = {
   sales: {
@@ -36,21 +54,23 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function TrendLineChart() {
+  const [selectedYear, setSelectedYear] = useState<string>("2025");
+
   return (
     <div className="flex flex-col">
       <div className="mb-2 flex justify-between px-4 pt-2">
-        <span>Recent Movement</span>
-        <Select>
+        <h5 className="font-bold text-gray-400">Recent Movement</h5>
+        <Select onValueChange={(year) => setSelectedYear(year)}>
           <SelectTrigger>
             <SelectValue placeholder="Select a Year" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value="2021">2021</SelectItem>
-              <SelectItem value="2021">2022</SelectItem>
-              <SelectItem value="2021">2023</SelectItem>
-              <SelectItem value="2021">2024</SelectItem>
-              <SelectItem value="2021">2025</SelectItem>
+              {Object.keys(salesData).map((year) => (
+                <SelectItem key={year} value={year}>
+                  {year}
+                </SelectItem>
+              ))}
             </SelectGroup>
           </SelectContent>
         </Select>
@@ -60,7 +80,7 @@ export function TrendLineChart() {
         className="flex h-[280px] w-full items-center"
       >
         <AreaChart
-          data={salesChartData}
+          data={salesData[selectedYear]}
           margin={{ top: 20, right: 30, bottom: 5 }}
         >
           <defs>

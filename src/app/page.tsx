@@ -1,7 +1,7 @@
+import { CryptoChart } from "@/components/chart/CryptoChart";
 import { TrendLineChart } from "@/components/chart/TrendLineChart";
 import { TrendCard } from "@/components/dashboard/TrendCard";
 import { analyticColumns } from "@/components/dataTable/analytic/AnalyticColumns";
-import { DataTableDemo } from "@/components/dataTable/demo/DataTableDemo";
 import { DataTable } from "@/components/dataTable/DataTable";
 
 export default function Home() {
@@ -84,9 +84,9 @@ export default function Home() {
         <div className="col-span-12 row-span-3 rounded-xl bg-white">
           <DataTable columns={analyticColumns} data={cryptoData} />
         </div>
-        {/* <div className="col-span-12 row-span-3 flex items-center justify-center rounded-xl bg-gray-500">
-          G
-        </div> */}
+        <div className="col-span-12 row-span-3 rounded-xl bg-white">
+          <CryptoChart />
+        </div>
       </main>
     </>
   );

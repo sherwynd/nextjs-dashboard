@@ -1,25 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
-  Home,
   User,
   Settings,
-  ChevronFirst,
-  ChevronLast,
   Users,
+  ChartArea,
+  ChevronLast,
+  ChevronFirst,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
+import { Button } from "./ui/button";
 
 const menuItems = [
-  { name: "Home", icon: <Home /> },
-  { name: "Profile", icon: <User /> },
-  { name: "Settings", icon: <Settings /> },
-  { name: "Admin", icon: <Users /> },
+  { name: "Dashboard", icon: <ChartArea />, path: "/" },
+  { name: "Profile", icon: <User />, path: "/profile" },
+  { name: "Settings", icon: <Settings />, path: "/settings" },
+  { name: "Admin", icon: <Users />, path: "/admin" },
 ];
 
 export function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
+  const router = useRouter();
 
   return (
     <aside
@@ -48,7 +51,8 @@ export function Sidebar() {
           {menuItems.map((item) => (
             <li
               key={item.name}
-              className={`flex items-center gap-4 rounded-md p-3 hover:bg-gray-700 ${
+              onClick={() => router.push(item.path)}
+              className={`flex cursor-pointer items-center gap-4 rounded-md p-3 hover:bg-gray-700 ${
                 collapsed && "justify-center"
               }`}
             >

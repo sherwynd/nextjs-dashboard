@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
 export function CryptoChart() {
-  const [state, setState] = React.useState<{
+  const [state] = useState<{
     series: { data: { x: Date; y: number[] }[] }[];
     options: ApexOptions;
   }>({

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
-  User,
-  Settings,
+  // User,
+  // Settings,
   Users,
   ChartArea,
   ChevronLast,
@@ -15,8 +15,8 @@ import { Button } from "./ui/button";
 
 const menuItems = [
   { name: "Dashboard", icon: <ChartArea />, path: "/" },
-  { name: "Profile", icon: <User />, path: "/profile" },
-  { name: "Settings", icon: <Settings />, path: "/settings" },
+  // { name: "Profile", icon: <User />, path: "/profile" },
+  // { name: "Settings", icon: <Settings />, path: "/settings" },
   { name: "Admin", icon: <Users />, path: "/admin" },
 ];
 

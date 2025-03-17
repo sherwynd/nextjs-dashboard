@@ -1,13 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { Home, User, Settings, ChevronFirst, ChevronLast } from "lucide-react";
+import {
+  Home,
+  User,
+  Settings,
+  ChevronFirst,
+  ChevronLast,
+  Users,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const menuItems = [
   { name: "Home", icon: <Home /> },
   { name: "Profile", icon: <User /> },
   { name: "Settings", icon: <Settings /> },
+  { name: "Admin", icon: <Users /> },
 ];
 
 export function Sidebar() {

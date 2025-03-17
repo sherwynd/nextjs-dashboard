@@ -1,3 +1,4 @@
+import { TrendLineChart } from "@/components/chart/TrendLineChart";
 import { TrendCard } from "@/components/dashboard/TrendCard";
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
       percentage: -2.25,
     },
   ];
+
   return (
     <>
       <h1 className="pb-4 font-medium">Analytics Dashboard</h1>
@@ -51,8 +53,8 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="col-span-12 flex items-center justify-center rounded-2xl bg-green-500 lg:col-span-8">
-          C
+        <div className="col-span-12 rounded-xl bg-white p-1 lg:col-span-8">
+          <TrendLineChart />
         </div>
 
         <div className="col-span-12 row-span-3 flex items-center justify-center rounded-2xl bg-pink-500 md:col-span-3">

@@ -7,7 +7,7 @@ describe("Button Component", () => {
     props: Partial<React.ComponentProps<typeof Button>> = {},
   ) => render(<Button {...props}>{props.children ?? "Click Me"}</Button>);
 
-  it("renders with the correct label", () => {
+  it("should renders with the correct label", () => {
     renderButton();
     expect(
       screen.getByRole("button", { name: "Click Me" }),
@@ -19,7 +19,7 @@ describe("Button Component", () => {
     ["destructive", "bg-destructive", "Delete"],
   ] as const)(
     // This ensures TypeScript correctly infers the type
-    "applies the '%s' variant class",
+    "should applies the '%s' variant class",
     (variant, expectedClass, label) => {
       renderButton({
         variant: variant as "default" | "destructive",
@@ -31,7 +31,7 @@ describe("Button Component", () => {
     },
   );
 
-  it("triggers click events", () => {
+  it("should triggers click events", () => {
     const handleClick = jest.fn();
     renderButton({ onClick: handleClick });
 

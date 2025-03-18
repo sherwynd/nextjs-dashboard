@@ -7,10 +7,10 @@ export function Header() {
   return (
     <div className="navbar flex h-16 items-center justify-between bg-white p-4 shadow-xl dark:bg-gray-800">
       <TemporarySidebar />
-      <div className="flex items-center">
+      <div className="right-navbar-part flex items-center gap-x-3">
         <Bell />
         <ThemeButton />
-        <Avatar>
+        <Avatar className="size-10">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>

@@ -3,25 +3,33 @@ import "@testing-library/jest-dom";
 import { Button } from "@/components/ui/button";
 
 describe("Button Component", () => {
-  const renderButton = (props?: any) =>
-    render(<Button {...props}>{props?.children || "Click Me"}</Button>);
+  const renderButton = (
+    props: Partial<React.ComponentProps<typeof Button>> = {},
+  ) => render(<Button {...props}>{props.children ?? "Click Me"}</Button>);
 
   it("renders with the correct label", () => {
     renderButton();
     expect(
-      screen.getByRole("button", { name: /click me/i }),
+      screen.getByRole("button", { name: "Click Me" }),
     ).toBeInTheDocument();
   });
 
   test.each([
     ["default", "bg-primary", "Click Me"],
     ["destructive", "bg-destructive", "Delete"],
-  ])("applies the '%s' variant class", (variant, expectedClass, label) => {
-    renderButton({ variant, children: label });
-    expect(
-      screen.getByRole("button", { name: new RegExp(label, "i") }),
-    ).toHaveClass(expectedClass);
-  });
+  ] as const)(
+    // This ensures TypeScript correctly infers the type
+    "applies the '%s' variant class",
+    (variant, expectedClass, label) => {
+      renderButton({
+        variant: variant as "default" | "destructive",
+        children: label,
+      });
+      expect(
+        screen.getByRole("button", { name: new RegExp(label, "i") }),
+      ).toHaveClass(expectedClass);
+    },
+  );
 
   it("triggers click events", () => {
     const handleClick = jest.fn();

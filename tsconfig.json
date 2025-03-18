@@ -13,42 +13,25 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@actions/*": [
-        "./src/actions/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@constants/*": [
-        "./src/constants/*"
-      ],
-      "@databases/*": [
-        "./src/databases/*"
-      ],
-      "@lib/*": [
-        "./src/lib/*"
-      ],
-      "@schemas/*": [
-        "./src/schemas/*"
-      ],
-      "@provider/*": [
-        "./src/provider/*"
-      ],
-      "@api/*": [
-        "./src/app/api/*"
-      ],
-      "@features/*": [
-        "./src/features/*"
-      ],
+      "@/*": ["./src/*"],
+      "@actions/*": ["./src/actions/*"],
+      "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@databases/*": ["./src/databases/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@schemas/*": ["./src/schemas/*"],
+      "@provider/*": ["./src/provider/*"],
+      "@api/*": ["./src/app/api/*"],
+      "@features/*": ["./src/features/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

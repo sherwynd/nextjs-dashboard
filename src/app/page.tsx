@@ -82,7 +82,11 @@ export default function Home() {
         </div>
 
         <div className="col-span-12 row-span-3 rounded-xl bg-white">
-          <DataTable columns={analyticColumns} data={cryptoData} />
+          <DataTable
+            columns={analyticColumns}
+            data={cryptoData}
+            rowSelected={false}
+          />
         </div>
         <div className="col-span-12 row-span-3 rounded-xl bg-white">
           <CryptoChart />

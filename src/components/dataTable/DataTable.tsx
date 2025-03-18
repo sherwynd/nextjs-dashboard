@@ -28,11 +28,21 @@ import { DataTableViewOptions } from "./demo/DataTableViewOptions";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  isFilterColumns?: boolean;
+  filterColumnKey?: string;
+  isToggleColumns?: boolean;
+  rowSelected?: boolean;
+  rowPerPage?: boolean;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  isFilterColumns = true,
+  filterColumnKey = "name",
+  isToggleColumns = true,
+  rowSelected = true,
+  rowPerPage = true,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -58,15 +68,23 @@ export function DataTable<TData, TValue>({
     <div className="p-4">
       {/* Filter and Columns Toggle */}
       <div className="filter-and-columns-toggle-part flex items-center py-4">
-        <Input
-          placeholder="Filter name"
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-        <DataTableViewOptions table={table} />
+        {isFilterColumns && (
+          <Input
+            placeholder={`Filter ${filterColumnKey}`}
+            value={
+              (table
+                .getColumn(`${filterColumnKey}`)
+                ?.getFilterValue() as string) ?? ""
+            }
+            onChange={(event) =>
+              table
+                .getColumn(`${filterColumnKey}`)
+                ?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm"
+          />
+        )}
+        {isToggleColumns && <DataTableViewOptions table={table} />}
       </div>
 
       {/* Data Table Section */}
@@ -123,7 +141,11 @@ export function DataTable<TData, TValue>({
 
       {/* Pagination Set */}
       <div className="pagination-part flex items-center justify-end space-x-2 py-4">
-        <DataTablePagination table={table} />
+        <DataTablePagination
+          table={table}
+          rowSelected={rowSelected}
+          rowPerPage={rowPerPage}
+        />
       </div>
     </div>
   );

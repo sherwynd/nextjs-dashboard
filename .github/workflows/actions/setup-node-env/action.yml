@@ -1,0 +1,12 @@
+name: Setup Node Env
+description: Setup Node.js, install deps, and cache npm
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: "npm"
+
+    -  name: Install dependencies
+        run: npm ci --legacy-peer-deps

@@ -1,7 +1,6 @@
 import { userColumns } from "@/components/dataTable/analytic/UserColumns";
 import { DataTable } from "@/components/dataTable/DataTable";
 import { Metadata } from "next";
-import { createClient } from "@/utils/supabase/client";
 
 export const metadata: Metadata = {
   title: "Admin Board",
@@ -9,9 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Admin() {
-  const supabase = createClient();
-  const { data: test } = await supabase.from("test").select();
-  console.log(JSON.stringify(test));
   type User = {
     id: string;
     name: string;

@@ -81,14 +81,15 @@ export default function Home() {
           <TrendLineChart />
         </div>
 
-        <div className="col-span-12 row-span-3 rounded-xl bg-white">
+        <div className="col-span-12 rounded-xl bg-white">
           <DataTable
             columns={analyticColumns}
             data={cryptoData}
             rowSelected={false}
+            enableColumnFilter={false}
           />
         </div>
-        <div className="col-span-12 row-span-3 rounded-xl bg-white">
+        <div className="col-span-12 rounded-xl bg-white">
           <CryptoChart />
         </div>
       </main>

@@ -5,7 +5,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "BoardKit",
+  title: "Analytic Dashboard",
   description: "Sherwynd Portfolio App",
 };
 
@@ -23,11 +23,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* Sidebar (Client Component for interactivity) */}
+          {/* Client Component for interactivity */}
           <Sidebar />
 
           <div className="flex flex-1 flex-col">
-            {/* Header */}
             <Header />
 
             {/* Main Content */}
